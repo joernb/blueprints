@@ -5,7 +5,14 @@
   "version": "1.0.0",
   "author": "",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^12.7.2",
+    "dotenv": "^8.1.0",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
+  },
   "license": "UNLICENSED",
   "scripts": {}
 }
