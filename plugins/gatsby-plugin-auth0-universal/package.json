@@ -1,0 +1,9 @@
+{
+  "name": "gatsby-plugin-auth0-universal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "auth0-js": "^9.11.1"
+  },
+  "devDependencies": {}
+}

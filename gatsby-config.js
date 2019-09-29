@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -32,6 +36,32 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-auth0-universal`,
+      options: {
+        domain: process.env.AUTH0_DOMAIN,
+        clientID: process.env.AUTH0_CLIENTID,
+        redirectUri: process.env.AUTH0_CALLBACK_URL,
+        silentAuthFlag: "silentAuthFlag",
+        logoutUrl: process.env.AUTH0_LOGOUT_URL,
+        scope: [
+          "openid",
+          "profile",
+          "email",
+          "read:current_user",
+          "create:current_user_metadata",
+          "update:current_user_metadata",
+          "delete:current_user_metadata",
+        ].join(" "),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: {
+        // TODO add client-side page prefix patterns (e.g. /profile/*)
+        prefixes: [`/login/*`],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
