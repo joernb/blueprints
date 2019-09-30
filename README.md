@@ -62,4 +62,22 @@ Static JSON data:
 - Powered by [gatsby-transformer-json](https://www.gatsbyjs.org/packages/gatsby-transformer-json/)
 - JSON files are stored in `src/data/`
 
+### Content Management
+
+Powered by [Contentful](https://contentful.com).
+
+Setup:
+
+- Create an empty Contentful space
+- Add locales
+
+<!-- TODO create and configure Contentful space 0.5h -->
+
+Environment:
+
+- CONTENTFUL_HOST: Defaults to `cdn.contentful.com` but is `preview.contentful.com` if you want to use the Content Preview API.
+- CONTENTFUL_SPACE_ID: Can be obtained from the url when logged in.
+- CONTENTFUL_ENVIRONMENT: Specify the environment of the space. Defaults to `master`.
+- CONTENTFUL_ACCESS_TOKEN: Create this in the backend UI under "Settings > API keys".
+
 ## Acknowledgments
