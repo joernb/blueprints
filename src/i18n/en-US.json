@@ -1,0 +1,21 @@
+{
+  "path": "{originalPath}",
+  "index": {
+    "title": "Home",
+    "heading": "Hi people",
+    "text1": "Welcome to your new Gatsby site.",
+    "text2": "Now go build something great.",
+    "link-to-page2": "Go to page 2"
+  },
+  "page-2": {
+    "title": "Page two",
+    "heading": "Hi from the second page",
+    "text": "Welcome to page 2",
+    "link-back": "Go back to the homepage"
+  },
+  "404": {
+    "title": "404: Not found",
+    "heading": "Not found",
+    "text": "You just hit a route that doesn't exist... the sadness."
+  }
+}
