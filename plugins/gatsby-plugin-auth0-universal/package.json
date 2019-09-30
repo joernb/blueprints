@@ -1,0 +1,11 @@
+{
+  "name": "gatsby-plugin-auth0-universal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@types/auth0-js": "^9.10.6",
+    "auth0-js": "^9.11.1",
+    "react-async-hook": "^3.4.0"
+  },
+  "devDependencies": {}
+}
