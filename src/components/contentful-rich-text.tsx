@@ -5,6 +5,7 @@ import {
 import { Document } from "@contentful/rich-text-types";
 import React from "react";
 
+// TODO customize Contentful RichText rendering
 /**
  * See {@link https://www.contentful.com/developers/docs/tutorials/general/rich-text-and-gatsby/ RichText and Gatsby}
  */
