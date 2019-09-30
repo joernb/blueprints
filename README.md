@@ -62,4 +62,15 @@ Static JSON data:
 - Powered by [gatsby-transformer-json](https://www.gatsbyjs.org/packages/gatsby-transformer-json/)
 - JSON files are stored in `src/data/`
 
+### [Google Analytics](https://analytics.google.com)
+
+Powered by [gatsby-plugin-google-analytics](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-plugin-google-analytics).
+
+The analytics script is only integrated in production builds. Test it with:
+
+```sh
+yarn build
+yarn serve
+```
+
 ## Acknowledgments
