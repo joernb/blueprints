@@ -46,5 +46,18 @@ module.exports = {
         // TODO add json files for supported languages to src/i18n
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        host: process.env.CONTENTFUL_HOST,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        environment: process.env.CONTENTFUL_ENVIRONMENT,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
+      },
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
 };
