@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -37,8 +39,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-use-location`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-react-intl`,
+      options: {
+        messagesDir: `${__dirname}/src/i18n`,
+        // TODO add json files for supported languages to src/i18n
+      },
+    },
   ],
 };
