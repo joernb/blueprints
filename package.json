@@ -20,6 +20,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "gatsby-plugin-s3": "^0.3.2",
     "prettier": "^1.18.2"
   },
   "keywords": [
@@ -32,6 +33,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "NODE_OPTIONS='-r dotenv/config' yarn develop",
     "serve": "NODE_OPTIONS='-r dotenv/config' gatsby serve -p 8000",
+    "deploy": "NODE_OPTIONS='-r dotenv/config' gatsby-plugin-s3 deploy",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "repository": {

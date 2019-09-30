@@ -62,4 +62,37 @@ Static JSON data:
 - Powered by [gatsby-transformer-json](https://www.gatsbyjs.org/packages/gatsby-transformer-json/)
 - JSON files are stored in `src/data/`
 
+### S3 Deployment
+
+Deployment is powered by [gatsby-plugin-s3](https://github.com/jariz/gatsby-plugin-s3).
+
+To trigger a deployment, run:
+
+```sh
+yarn deploy
+```
+
+Setup:
+
+- A programatic IAM user with `S3FullAccess` is needed. Take note of `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` during registration.
+- Bucket names are not scoped to an AWS account. They are mapped to an AWS subdomain and therefore have to be scoped with some form of company prefix.
+- One bucket for each environment (stage, prod)
+
+<!-- TODO create IAM user, create and name stage and prod S3 buckets 0.5h -->
+
+Bucket creation:
+
+- Disable blocking public access
+- Continue with default settings
+- Enable "Properties - Static Hosting"
+- Take note of the endpoint url as PUBLIC_URL
+
+Environment variables:
+
+- AWS_REGION: Region, e.g. `eu-central-1`
+- AWS_ACCESS_KEY_ID: Revealed only during IAM user creation. Read by the AWS CLI.
+- AWS_SECRET_ACCESS_KEY: Revealed only during IAM user creation. Read by the AWS CLI.
+- AWS_S3_BUCKET_NAME: Chosen during bucket creation.
+- PUBLIC_URL: The bucket endpoint url acts as the public url of the web app.
+
 ## Acknowledgments
