@@ -1,0 +1,11 @@
+{
+  "name": "gatsby-plugin-use-location",
+  "version": "1.0.0",
+  "description": "Provides a useLocation hook to consume @reach/router's LocationContext",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
