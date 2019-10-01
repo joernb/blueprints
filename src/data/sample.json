@@ -1,0 +1,125 @@
+{
+  "staticText": {
+    "heroHeading": "Heading",
+    "heroBody": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "heroButton": "Take Action",
+    "introHeading": "Heading",
+    "introBody": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "introButton": "Take Action",
+    "articleHeading": "Heading",
+    "articleBody": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "articleButton": "Take Action",
+    "impressionsHeading": "Impressions",
+    "impressionsBody": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "testimonialHeading": "Testimonials",
+    "testimonialBody": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "partnersHeading": "Partners",
+    "partnersBody": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "pricingHeading": "Pricing",
+    "pricingBody": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+    "contactHeading": "Contact Us",
+    "contactBody": "Company Name, Street Address, City",
+    "contactButton": "Email us"
+  },
+  "articles": [
+    {
+      "slug": "article1",
+      "title": "Article 1",
+      "body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    },
+    {
+      "slug": "article2",
+      "title": "Article 2",
+      "body": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+    }
+  ],
+  "plans": [
+    {
+      "slug": "free",
+      "title": "Free",
+      "description": "Lorem ipsum."
+    },
+    {
+      "slug": "premium",
+      "title": "Premium",
+      "description": "Lorem ipsum."
+    },
+    {
+      "slug": "gold",
+      "title": "Gold",
+      "description": "Lorem ipsum."
+    }
+  ],
+  "features": [
+    {
+      "label": "Feature1",
+      "tooltip": "Explanation of Feature1",
+      "plan": ["free", "premium", "gold"]
+    },
+    {
+      "label": "Feature2",
+      "tooltip": "Explanation of Feature2",
+      "plan": ["premium", "gold"]
+    },
+    {
+      "label": "Feature3",
+      "tooltip": "Explanation of Feature3",
+      "plan": ["gold"]
+    }
+  ],
+  "impressions": [
+    {
+      "title": "Heading",
+      "body": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "Heading",
+      "body": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "Heading",
+      "body": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "Heading",
+      "body": "Lorem ipsum dolor sit amet."
+    }
+  ],
+  "testimonials": [
+    {
+      "title": "John Doe, Acme Inc.",
+      "body": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "Jane Doe, Acme Inc.",
+      "body": "Lorem ipsum dolor sit amet."
+    },
+    {
+      "title": "Jess Doe, Acme Inc.",
+      "body": "Lorem ipsum dolor sit amet."
+    }
+  ],
+  "partners": [
+    {
+      "title": "Acme Inc."
+    },
+    {
+      "title": "Acme Inc."
+    },
+    {
+      "title": "Acme Inc."
+    },
+    {
+      "title": "Acme Inc."
+    },
+    {
+      "title": "Acme Inc."
+    },
+    {
+      "title": "Acme Inc."
+    },
+    {
+      "title": "Acme Inc."
+    }
+  ]
+}

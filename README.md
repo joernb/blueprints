@@ -63,3 +63,11 @@ Static JSON data:
 - JSON files are stored in `src/data/`
 
 ## Acknowledgments
+
+### [unsplash.com](https://unsplash.com)
+
+Images from unsplash.com contain the author name and the id code in their filename. Open https://unsplash.com/photos/ID-CODE to find the corresponding page and the author's profile.
+
+### Acme Logos
+
+by Mackenzie Child - http://acmelogos.com/ - https://github.com/mackenziechild/Acme-Logos

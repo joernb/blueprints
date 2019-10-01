@@ -5,7 +5,11 @@ import theme from "../theme";
 
 const useStyles = makeStyles(() => ({}));
 
-const Layout = ({ children }: { children: ReactNode }) => {
+interface Props {
+  children?: ReactNode;
+}
+
+const Layout = ({ children }: Props) => {
   const classes = useStyles();
 
   return (
