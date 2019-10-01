@@ -4,7 +4,11 @@
   "description": "",
   "version": "1.0.0",
   "author": "",
-  "dependencies": {},
+  "dependencies": {
+    "contentful-cli": "^0.36.0",
+    "contentful-management": "^5.9.1",
+    "contentful-migration": "^0.19.5"
+  },
   "devDependencies": {
     "@types/node": "^12.7.2",
     "dotenv": "^8.1.0",
@@ -14,5 +18,8 @@
     "typescript": "^3.5.3"
   },
   "license": "UNLICENSED",
-  "scripts": {}
+  "scripts": {
+    "migrate": "NODE_OPTIONS='-r dotenv/config' ts-node --files ./src/migrate.ts",
+    "sample-data": "NODE_OPTIONS='-r dotenv/config' ts-node --files ./src/sample-data.ts"
+  }
 }
