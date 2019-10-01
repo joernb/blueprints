@@ -1,0 +1,20 @@
+service: _
+
+provider:
+  # TODO set serverless provider
+  # name: aws
+  runtime: nodejs8.10
+  # default stage
+  stage: stage
+  # default region
+  region: eu-central-1
+
+plugins:
+  - serverless-plugin-typescript
+
+functions:
+  index:
+    handler: .build/index.default
+    events:
+      - http: ANY /
+      - http: "ANY {proxy+}"

@@ -18,4 +18,8 @@ cp .env.example .env
 
 ## Features
 
+### Serverless function
+
+[Docs](https://serverless.com/framework/docs/providers/fn/guide)
+
 ## Acknowledgments
