@@ -1,0 +1,337 @@
+{
+  "data": {},
+  "content": [
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "Heading1",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "heading-1"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "Heading2",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "heading-2"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "Heading3",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "heading-3"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "Heading4",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "heading-4"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "Heading5",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "heading-5"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "Heading6",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "heading-6"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "paragraph"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [
+            {
+              "type": "bold"
+            }
+          ],
+          "value": "Bold",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "paragraph"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [
+            {
+              "type": "italic"
+            }
+          ],
+          "value": "Italic",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "paragraph"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "",
+          "nodeType": "text"
+        },
+        {
+          "data": {
+            "uri": "https://example.com"
+          },
+          "content": [
+            {
+              "data": {},
+              "marks": [],
+              "value": "Link",
+              "nodeType": "text"
+            }
+          ],
+          "nodeType": "hyperlink"
+        },
+        {
+          "data": {},
+          "marks": [],
+          "value": "",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "paragraph"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [
+            {
+              "type": "code"
+            }
+          ],
+          "value": "Code block",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "paragraph"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "content": [
+            {
+              "data": {},
+              "content": [
+                {
+                  "data": {},
+                  "marks": [],
+                  "value": "List item1",
+                  "nodeType": "text"
+                }
+              ],
+              "nodeType": "paragraph"
+            }
+          ],
+          "nodeType": "list-item"
+        },
+        {
+          "data": {},
+          "content": [
+            {
+              "data": {},
+              "content": [
+                {
+                  "data": {},
+                  "marks": [],
+                  "value": "List item2",
+                  "nodeType": "text"
+                }
+              ],
+              "nodeType": "paragraph"
+            },
+            {
+              "data": {},
+              "content": [
+                {
+                  "data": {},
+                  "content": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "data": {},
+                          "marks": [],
+                          "value": "Sublist item 2.1",
+                          "nodeType": "text"
+                        }
+                      ],
+                      "nodeType": "paragraph"
+                    }
+                  ],
+                  "nodeType": "list-item"
+                }
+              ],
+              "nodeType": "unordered-list"
+            }
+          ],
+          "nodeType": "list-item"
+        }
+      ],
+      "nodeType": "unordered-list"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "content": [
+            {
+              "data": {},
+              "content": [
+                {
+                  "data": {},
+                  "marks": [],
+                  "value": "Ordered list item1",
+                  "nodeType": "text"
+                }
+              ],
+              "nodeType": "paragraph"
+            }
+          ],
+          "nodeType": "list-item"
+        },
+        {
+          "data": {},
+          "content": [
+            {
+              "data": {},
+              "content": [
+                {
+                  "data": {},
+                  "marks": [],
+                  "value": "Ordered list item2",
+                  "nodeType": "text"
+                }
+              ],
+              "nodeType": "paragraph"
+            },
+            {
+              "data": {},
+              "content": [
+                {
+                  "data": {},
+                  "content": [
+                    {
+                      "data": {},
+                      "content": [
+                        {
+                          "data": {},
+                          "marks": [],
+                          "value": "Ordered sublist item 2.1",
+                          "nodeType": "text"
+                        }
+                      ],
+                      "nodeType": "paragraph"
+                    }
+                  ],
+                  "nodeType": "list-item"
+                }
+              ],
+              "nodeType": "ordered-list"
+            }
+          ],
+          "nodeType": "list-item"
+        }
+      ],
+      "nodeType": "ordered-list"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "content": [
+            {
+              "data": {},
+              "marks": [],
+              "value": "Blockquote",
+              "nodeType": "text"
+            }
+          ],
+          "nodeType": "paragraph"
+        }
+      ],
+      "nodeType": "blockquote"
+    },
+    {
+      "data": {},
+      "content": [],
+      "nodeType": "hr"
+    },
+    {
+      "data": {},
+      "content": [
+        {
+          "data": {},
+          "marks": [],
+          "value": "",
+          "nodeType": "text"
+        }
+      ],
+      "nodeType": "paragraph"
+    }
+  ],
+  "nodeType": "document"
+}
