@@ -1,0 +1,93 @@
+# GitLab CI/CD Pipeline Configuration Reference: https://docs.gitlab.com/ee/ci/yaml/
+
+default:
+  image: node:latest
+  # https://docs.gitlab.com/ee/ci/caching/#caching-nodejs-dependencies
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+
+# https://docs.gitlab.com/ee/ci/yaml/#stages
+stages:
+  - build
+  - test
+  - deploy
+
+.build:
+  stage: build
+  script:
+    - yarn
+  artifacts:
+    paths:
+      # TODO add build artifacts (e.g. dist, build, public)
+      # - build
+
+.deploy:
+  stage: deploy
+  script:
+    - yarn deploy
+
+.staging:
+  variables:
+    CONTENTFUL_HOST: $STAGING_CONTENTFUL_HOST
+    CONTENTFUL_SPACE_ID: $STAGING_CONTENTFUL_SPACE_ID
+    CONTENTFUL_ENVIRONMENT: $STAGING_CONTENTFUL_ENVIRONMENT
+    CONTENTFUL_MANAGEMENT_TOKEN: $STAGING_CONTENTFUL_MANAGEMENT_TOKEN
+
+.production:
+  variables:
+    CONTENTFUL_HOST: $PRODUCTION_CONTENTFUL_HOST
+    CONTENTFUL_SPACE_ID: $PRODUCTION_CONTENTFUL_SPACE_ID
+    CONTENTFUL_ENVIRONMENT: $PRODUCTION_CONTENTFUL_ENVIRONMENT
+    CONTENTFUL_MANAGEMENT_TOKEN: $PRODUCTION_CONTENTFUL_MANAGEMENT_TOKEN
+
+build_staging:
+  extends:
+    - .build
+    - .staging
+  except:
+    - /^release.*$/
+
+build_production:
+  extends:
+    - .build
+    - .production
+  only:
+    - /^release.*$/
+
+test:
+  stage: test
+  script:
+    - yarn test
+  artifacts:
+    paths:
+      # TODO add test artifacts (e.g. coverage)
+      # - coverage
+
+lint:
+  stage: test
+  script:
+    - yarn lint
+
+deploy_staging:
+  extends:
+    - .deploy
+    - .staging
+  # https://docs.gitlab.com/ee/ci/environments.html#defining-environments
+  environment:
+    name: staging
+    url: https://app.contentful.com/spaces/$STAGING_CONTENTFUL_SPACE_ID
+  only:
+    - master
+
+deploy_production:
+  extends:
+    - .deploy
+    - .production
+  # https://docs.gitlab.com/ee/ci/environments.html#defining-environments
+  environment:
+    name: production
+    url: https://app.contentful.com/spaces/$PRODUCTION_CONTENTFUL_SPACE_ID
+  only:
+    - /^release.*$/

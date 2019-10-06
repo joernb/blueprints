@@ -1,9 +1,7 @@
 {
-  "name": "_",
+  "name": "TODO-set-node-package-name",
   "private": true,
-  "description": "",
   "version": "1.0.0",
-  "author": "",
   "dependencies": {
     "contentful-cli": "^0.36.0",
     "contentful-management": "^5.9.1",
@@ -12,14 +10,17 @@
   "devDependencies": {
     "@types/node": "^12.7.2",
     "dotenv": "^8.1.0",
+    "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3"
   },
-  "license": "UNLICENSED",
   "scripts": {
-    "migrate": "NODE_OPTIONS='-r dotenv/config' ts-node --files ./src/migrate.ts",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+    "test": "echo \"TODO: Write test script!\"",
+    "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
+    "deploy": "NODE_OPTIONS='-r dotenv/config' ts-node --files ./src/migrate.ts",
     "sample-data": "NODE_OPTIONS='-r dotenv/config' ts-node --files ./src/sample-data.ts"
   }
 }
