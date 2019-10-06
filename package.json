@@ -1,9 +1,7 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "TODO-set-node-package-name",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "version": "1.0.0",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@contentful/rich-text-types": "^13.4.0",
@@ -25,10 +23,14 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@types/node": "^12.7.2",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
+    "dotenv": "^8.1.0",
     "prettier": "^1.18.2",
+    "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-loader": "^3.5.4",
@@ -36,23 +38,14 @@
     "tslint-react": "^4.0.0",
     "typescript": "^3.5.3"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
   "scripts": {
     "build": "NODE_OPTIONS='-r dotenv/config' gatsby build",
     "develop": "NODE_OPTIONS='-r dotenv/config' gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "start": "NODE_OPTIONS='-r dotenv/config' yarn develop",
     "serve": "NODE_OPTIONS='-r dotenv/config' gatsby serve -p 8000",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
+    "deploy": "echo \"TODO: Write deployment script!\""
   }
 }
