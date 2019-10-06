@@ -1,11 +1,13 @@
 {
-  "name": "_",
+  "name": "TODO-set-node-package-name",
   "private": true,
-  "description": "",
   "version": "1.0.0",
-  "author": "",
   "dependencies": {},
   "devDependencies": {},
-  "license": "UNLICENSED",
-  "scripts": {}
+  "scripts": {
+    "build": "echo \"TODO: Write build script!\"",
+    "test": "echo \"TODO: Write test script!\"",
+    "lint": "echo \"TODO: Implement linting checks!\"",
+    "deploy": "echo \"TODO: Write deployment script!\""
+  }
 }
