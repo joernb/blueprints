@@ -1,9 +1,7 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "TODO-set-node-package-name",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "version": "1.0.0",
   "dependencies": {
     "gatsby": "^2.13.42",
     "gatsby-image": "^2.2.7",
@@ -22,23 +20,14 @@
   "devDependencies": {
     "prettier": "^1.18.2"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
   "scripts": {
     "build": "NODE_OPTIONS='-r dotenv/config' gatsby build",
     "develop": "NODE_OPTIONS='-r dotenv/config' gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "NODE_OPTIONS='-r dotenv/config' yarn develop",
     "serve": "NODE_OPTIONS='-r dotenv/config' gatsby serve -p 8000",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "lint": "prettier --check src/**/*.{js,jsx}",
+    "deploy": "echo \"TODO: Write deployment script!\""
   }
 }
