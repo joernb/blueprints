@@ -31,11 +31,19 @@ stages:
 
 .staging:
   variables:
-    # TODO map environment variables, e.g.: FOO: $STAGING_FOO
+    PUBLIC_URL: $STAGING_PUBLIC_URL
+    AWS_REGION: $STAGING_AWS_REGION
+    AWS_ACCESS_KEY_ID: $STAGING_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $STAGING_AWS_SECRET_ACCESS_KEY
+    AWS_S3_BUCKET_NAME: $STAGING_AWS_S3_BUCKET_NAME
 
 .production:
   variables:
-    # TODO map environment variables, e.g.: FOO: $PRODUCTION_FOO
+    PUBLIC_URL: $PRODUCTION_PUBLIC_URL
+    AWS_REGION: $PRODUCTION_AWS_REGION
+    AWS_ACCESS_KEY_ID: $PRODUCTION_AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $PRODUCTION_AWS_SECRET_ACCESS_KEY
+    AWS_S3_BUCKET_NAME: $PRODUCTION_AWS_S3_BUCKET_NAME
 
 build_staging:
   extends:
@@ -72,7 +80,7 @@ deploy_staging:
   # https://docs.gitlab.com/ee/ci/environments.html#defining-environments
   environment:
     name: staging
-    url: $STAGING_GITLAB_ENV_URL
+    url: $STAGING_PUBLIC_URL
   only:
     - master
 
@@ -83,6 +91,6 @@ deploy_production:
   # https://docs.gitlab.com/ee/ci/environments.html#defining-environments
   environment:
     name: production
-    url: $PRODUCTION_GITLAB_ENV_URL
+    url: $PRODUCTION_PUBLIC_URL
   only:
     - /^release.*$/
