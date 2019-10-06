@@ -3,11 +3,14 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  },
   "scripts": {
+    "format": "prettier --write src/**/*.{js,jsx}",
     "build": "echo \"TODO: Write build script!\"",
     "test": "echo \"TODO: Write test script!\"",
-    "lint": "echo \"TODO: Implement linting checks!\"",
+    "lint": "prettier --check src/**/*.{js,jsx}",
     "deploy": "echo \"TODO: Write deployment script!\""
   }
 }
