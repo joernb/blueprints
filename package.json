@@ -20,10 +20,14 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@types/node": "^12.7.2",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
+    "dotenv": "^8.1.0",
     "prettier": "^1.18.2",
+    "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-loader": "^3.5.4",
@@ -38,7 +42,7 @@
     "start": "NODE_OPTIONS='-r dotenv/config' yarn develop",
     "serve": "NODE_OPTIONS='-r dotenv/config' gatsby serve -p 8000",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "lint": "prettier --check src/**/*.{js,jsx}",
+    "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
     "deploy": "echo \"TODO: Write deployment script!\""
   }
 }
