@@ -90,7 +90,7 @@ Static JSON data:
 - Powered by [gatsby-transformer-json](https://www.gatsbyjs.org/packages/gatsby-transformer-json/)
 - JSON files are stored in `src/data/`
 
-### Internationalization (i18n)
+## Internationalization (i18n)
 
 Based on [`react-intl`](https://github.com/formatjs/react-intl/tree/master/docs) and a custom local plugin called [gatsby-plugin-react-intl](plugins/gatsby-plugin-react-intl/README.md).
 
