@@ -1,0 +1,87 @@
+# GitLab CI/CD Pipeline Configuration Reference: https://docs.gitlab.com/ee/ci/yaml/
+
+default:
+  image: node:latest
+  # https://docs.gitlab.com/ee/ci/caching/#caching-nodejs-dependencies
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - node_modules/
+
+# https://docs.gitlab.com/ee/ci/yaml/#stages
+stages:
+  - build
+  - test
+  - deploy
+
+.build:
+  stage: build
+  script:
+    - yarn
+  artifacts:
+    paths:
+      # TODO add build artifacts (e.g. dist, build, public)
+      # - build
+
+.deploy:
+  stage: deploy
+  script:
+    - yarn deploy
+
+.staging:
+  variables:
+    # TODO map environment variables, e.g.: FOO: $STAGING_FOO
+
+.production:
+  variables:
+    # TODO map environment variables, e.g.: FOO: $PRODUCTION_FOO
+
+build_staging:
+  extends:
+    - .build
+    - .staging
+  except:
+    - /^release.*$/
+
+build_production:
+  extends:
+    - .build
+    - .production
+  only:
+    - /^release.*$/
+
+test:
+  stage: test
+  script:
+    - yarn test
+  artifacts:
+    paths:
+      # TODO add test artifacts (e.g. coverage)
+      # - coverage
+
+lint:
+  stage: test
+  script:
+    - yarn lint
+
+deploy_staging:
+  extends:
+    - .deploy
+    - .staging
+  # https://docs.gitlab.com/ee/ci/environments.html#defining-environments
+  environment:
+    name: staging
+    url: $STAGING_GITLAB_ENV_URL
+  only:
+    - master
+
+deploy_production:
+  extends:
+    - .deploy
+    - .production
+  # https://docs.gitlab.com/ee/ci/environments.html#defining-environments
+  environment:
+    name: production
+    url: $PRODUCTION_GITLAB_ENV_URL
+  only:
+    - /^release.*$/
