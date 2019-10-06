@@ -90,7 +90,7 @@ Static JSON data:
 - Powered by [gatsby-transformer-json](https://www.gatsbyjs.org/packages/gatsby-transformer-json/)
 - JSON files are stored in `src/data/`
 
-### Authentication
+## Authentication
 
 Powered by [Auth0](https://auth0.com/) and a custom local plugin called [`gatsby-plugin-auth0-universal`](./plugins/gatsby-plugin-auth0-universal/README.md).
 
@@ -130,7 +130,7 @@ Metadata:
   - Should contain things like current plan
   - Other services might use the REST API to change this
 
-#### Account setup:
+### Account setup:
 
 - Create a tenant for each environment (stage, prod)
 
@@ -145,12 +145,12 @@ Metadata:
     - Allowed Logout URLs - For non-production tenant: `http://localhost:8000/${AUTH0_LOGOUT_PATH}` - Same as `${AUTH0_LOGOUT_URL}`
 
 <!-- TODO register Auth0 account 0.5h -->
-<!-- TODO create Auth0 tenant for stage environment 0.5h -->
-<!-- TODO create Auth0 tenant for prod environment 0.5h -->
+<!-- TODO create Auth0 tenant for staging environment 0.5h -->
+<!-- TODO create Auth0 tenant for production environment 0.5h -->
 <!-- TODO enable social login providers -->
 <!-- TODO customize universal login page company logo url and colors 1h -->
 
-#### Emails
+### Emails
 
 Custom Email Provider:
 
@@ -160,7 +160,6 @@ Custom Email Provider:
   - Port: Port used by your SMTP server. Common ports include 25, 465, and 587. Please avoid using port 25 if you can, since many providers have limitations on this port.
   - Username: SMTP username
   - Password: SMTP password
-- Alternatives: Amazon SES, Mandrill, Sendgrid, SparkPost
 
 <!-- TODO configure custom email provider and test it 1h -->
 
@@ -177,12 +176,5 @@ function (user, context, callback) {
 ```
 
 <!-- TODO set up email verification rule 0.5h -->
-
-Environment:
-
-- AUTH0_DOMAIN: Created during account creation
-- AUTH0_CLIENTID: Created during App creation
-- AUTH0_CALLBACK_URL: s.th. like `${PUBLIC_URL}/callback`
-- AUTH0_LOGOUT_URL: S.th. like `${PUBLIC_URL}`
 
 ## Acknowledgments
