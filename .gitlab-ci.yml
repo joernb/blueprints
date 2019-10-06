@@ -31,11 +31,19 @@ stages:
 
 .staging:
   variables:
-    # TODO map environment variables, e.g.: FOO: $STAGING_FOO
+    PUBLIC_URL: $STAGING_PUBLIC_URL
+    AUTH0_DOMAIN: $STAGING_AUTH0_DOMAIN
+    AUTH0_CLIENTID: $STAGING_AUTH0_CLIENTID
+    AUTH0_CALLBACK_URL: $STAGING_AUTH0_CALLBACK_URL
+    AUTH0_LOGOUT_URL: $STAGING_AUTH0_LOGOUT_URL
 
 .production:
   variables:
-    # TODO map environment variables, e.g.: FOO: $PRODUCTION_FOO
+    PUBLIC_URL: $PRODUCTION_PUBLIC_URL
+    AUTH0_DOMAIN: $PRODUCTION_AUTH0_DOMAIN
+    AUTH0_CLIENTID: $PRODUCTION_AUTH0_CLIENTID
+    AUTH0_CALLBACK_URL: $PRODUCTION_AUTH0_CALLBACK_URL
+    AUTH0_LOGOUT_URL: $PRODUCTION_AUTH0_LOGOUT_URL
 
 build_staging:
   extends:
@@ -72,7 +80,7 @@ deploy_staging:
   # https://docs.gitlab.com/ee/ci/environments.html#defining-environments
   environment:
     name: staging
-    url: $STAGING_GITLAB_ENV_URL
+    url: $STAGING_PUBLIC_URL
   only:
     - master
 
@@ -83,6 +91,6 @@ deploy_production:
   # https://docs.gitlab.com/ee/ci/environments.html#defining-environments
   environment:
     name: production
-    url: $PRODUCTION_GITLAB_ENV_URL
+    url: $PRODUCTION_PUBLIC_URL
   only:
     - /^release.*$/
