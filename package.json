@@ -1,18 +1,22 @@
 {
-  "name": "_",
+  "name": "TODO-set-node-package-name",
   "private": true,
-  "description": "",
   "version": "1.0.0",
-  "author": "",
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^12.7.2",
     "dotenv": "^8.1.0",
+    "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.5.3"
   },
-  "license": "UNLICENSED",
-  "scripts": {}
+  "scripts": {
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+    "build": "echo \"TODO: Write build script!\"",
+    "test": "echo \"TODO: Write test script!\"",
+    "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
+    "deploy": "echo \"TODO: Write deployment script!\""
+  }
 }
