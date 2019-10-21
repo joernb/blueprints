@@ -2,11 +2,14 @@
   "name": "TODO-set-node-package-name",
   "private": true,
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  },
   "devDependencies": {
     "prettier": "^1.18.2"
   },
   "scripts": {
+    "start": "node src/index.js",
     "format": "prettier --write src/**/*.{js,jsx}",
     "build": "echo \"TODO: Write build script!\"",
     "test": "echo \"TODO: Write test script!\"",
