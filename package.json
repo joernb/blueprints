@@ -11,17 +11,23 @@
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/node": "^12.7.2",
     "dotenv": "^8.2.0",
     "nodemon": "^1.19.4",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.3"
   },
   "scripts": {
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "nodemon --watch src --exec babel-node -r node_modules/dotenv/config --extensions '.js' src/index.js",
-    "build": "babel src --out-dir dist --extensions '.js'",
+    "format": "prettier --write src/**/*.{js,ts}",
+    "start": "nodemon --watch src --exec babel-node -r node_modules/dotenv/config --extensions '.js,.ts' src/index.ts",
+    "build": "babel src --out-dir dist --extensions '.js,.ts'",
     "serve": "node -r dotenv/config dist/index.js",
     "test": "echo \"TODO: Write test script!\"",
-    "lint": "prettier --check src/**/*.{js,jsx}",
+    "lint": "prettier --check src/**/*.{js,ts} && tslint -c tslint.json 'src/**/*.{js,ts}'",
     "deploy": "echo \"TODO: Write deployment script!\""
   }
 }
