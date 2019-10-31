@@ -17,9 +17,9 @@
   },
   "scripts": {
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "nodemon --watch src --exec babel-node --extensions '.js' src/index.js",
+    "start": "nodemon --watch src --exec babel-node -r node_modules/dotenv/config --extensions '.js' src/index.js",
     "build": "babel src --out-dir dist --extensions '.js'",
-    "serve": "node dist/index.js",
+    "serve": "node -r dotenv/config dist/index.js",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx}",
     "deploy": "echo \"TODO: Write deployment script!\""
