@@ -2,7 +2,10 @@
   "name": "TODO-set-node-package-name",
   "private": true,
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "apollo-server": "^2.9.7",
+    "graphql": "^14.5.8"
+  },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",

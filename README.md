@@ -48,6 +48,10 @@ Deploy:
 yarn deploy
 ```
 
+## GraphQL Server
+
+Powered by [Apollo Server](https://github.com/apollographql/apollo-server).
+
 ## Continuous Integration / Continuous Delivery
 
 Inspired by [Trunk Based Development](https://trunkbaseddevelopment.com).
