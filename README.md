@@ -40,8 +40,4 @@ yarn deploy
 
 See the [docs](./docs) folder for more information.
 
-## Serverless function
-
-[Docs](https://serverless.com/framework/docs/providers/fn/guide)
-
 ## Acknowledgments
