@@ -6,8 +6,13 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "@babel/preset-env": "^7.6.3",
     "@types/node": "^12.7.2",
     "dotenv": "^8.2.0",
+    "nodemon": "^1.19.4",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
@@ -15,9 +20,10 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "start": "NODE_OPTIONS='-r dotenv/config' node src/index.js",
+    "start": "NODE_OPTIONS='-r dotenv/config' nodemon --watch src --exec babel-node --extensions '.js' src/index.ts",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "build": "echo \"TODO: Write build script!\"",
+    "build": "babel src --out-dir dist --extensions '.js,.ts'",
+    "serve": "NODE_OPTIONS='-r dotenv/config' node dist/index.js",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
     "deploy": "echo \"TODO: Write deployment script!\""

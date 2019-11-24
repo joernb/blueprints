@@ -18,10 +18,22 @@ Set up environment variables in `.env`:
 cp .env.example .env
 ```
 
+Start a development server:
+
+```sh
+yarn start
+```
+
 Build:
 
 ```sh
 yarn build
+```
+
+Serve a build locally:
+
+```sh
+yarn serve
 ```
 
 Run tests:
