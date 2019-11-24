@@ -20,9 +20,7 @@ stages:
     - yarn
     - yarn build
   artifacts:
-    paths:
-      # TODO add build artifacts (e.g. dist, build, public)
-      # - build
+    untracked: true
 
 .deploy:
   stage: deploy
@@ -70,14 +68,14 @@ test:
   script:
     - yarn test
   artifacts:
-    paths:
-      # TODO add test artifacts (e.g. coverage)
-      # - coverage
+    untracked: true
 
 lint:
   stage: test
   script:
     - yarn lint
+  artifacts:
+    untracked: true
 
 deploy_staging:
   extends:
