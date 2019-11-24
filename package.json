@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@types/node": "^12.7.2",
-    "dotenv": "^8.1.0",
+    "dotenv": "^8.2.0",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
