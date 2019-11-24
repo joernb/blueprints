@@ -10,7 +10,7 @@
     "prettier": "^1.18.2"
   },
   "scripts": {
-    "start": "node src/index.js",
+    "start": "NODE_OPTIONS='-r dotenv/config' node src/index.js",
     "format": "prettier --write src/**/*.{js,jsx}",
     "build": "echo \"TODO: Write build script!\"",
     "test": "echo \"TODO: Write test script!\"",
