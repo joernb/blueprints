@@ -1,5 +1,5 @@
-const express = require("express");
-const helloMiddleware = require("./hello");
+import express from "express";
+import helloMiddleware from "./hello";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -8,6 +8,6 @@ const port = process.env.PORT || 3000;
 app.use("/", helloMiddleware);
 
 // start app
-app.listen(port, function() {
+app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
 });
