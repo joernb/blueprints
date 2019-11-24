@@ -5,7 +5,7 @@
   "dependencies": {},
   "devDependencies": {
     "@types/node": "^12.7.2",
-    "dotenv": "^8.1.0",
+    "dotenv": "^8.2.0",
     "prettier": "^1.18.2",
     "serverless": "^1.50.0",
     "serverless-plugin-typescript": "^1.1.9",
