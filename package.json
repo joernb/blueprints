@@ -2,9 +2,13 @@
   "name": "TODO-set-node-package-name",
   "private": true,
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "@aws-cdk/core": "^1.8.0"
+  },
   "devDependencies": {
+    "@aws-cdk/assert": "^1.6.1",
     "@types/node": "^12.7.2",
+    "aws-cdk": "^1.8.0",
     "dotenv": "^8.2.0",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
@@ -17,6 +21,8 @@
     "build": "echo \"TODO: Write build script!\"",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
-    "deploy": "echo \"TODO: Write deployment script!\""
+    "cdk:bootstrap": "NODE_OPTIONS='-r dotenv/config' cdk bootstrap",
+    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff",
+    "deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy"
   }
 }
