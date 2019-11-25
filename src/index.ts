@@ -1,13 +1,26 @@
+import "reflect-metadata";
 import express from "express";
-import helloMiddleware from "./hello";
+import { ApolloServer, gql } from "apollo-server-express";
+import { buildSchema } from "type-graphql";
+import { HelloResolver } from "./hello";
 
-const app = express();
-const port = process.env.PORT || 3000;
+(async () => {
+  const app = express();
+  const port = process.env.PORT || 3000;
 
-// compose express app from express middlewares exported by modules
-app.use("/", helloMiddleware);
+  const server = new ApolloServer({
+    schema: await buildSchema({
+      resolvers: [HelloResolver],
+    }),
+    context: ({ req, res }) => ({ req, res }),
+  });
 
-// start app
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}!`);
-});
+  server.applyMiddleware({ app, cors: false });
+
+  // start app
+  app.listen(port, () => {
+    console.log(
+      `Example app listening on port ${port}! GraphQL playground at /graphql.`
+    );
+  });
+})();

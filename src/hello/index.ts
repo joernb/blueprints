@@ -1,8 +1,14 @@
-import { Router } from "express";
-const router = Router();
+import { Resolver, Query } from "type-graphql";
+import { Hello } from "./hello";
 
-router.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-export default router;
+@Resolver(Hello)
+export class HelloResolver {
+  @Query(() => Hello)
+  public hello() {
+    return {
+      id: "42",
+      title: "Hello World",
+      tags: ["value1", "value2", "value3"],
+    };
+  }
+}
