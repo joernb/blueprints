@@ -3,9 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
+    "@aws-cdk/core": "^1.8.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "@aws-cdk/assert": "^1.6.1",
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
@@ -13,7 +15,9 @@
     "@babel/preset-env": "^7.6.3",
     "@types/express": "^4.17.2",
     "@types/node": "^12.7.2",
+    "aws-cdk": "^1.8.0",
     "dotenv": "^8.2.0",
+    "dotenv-cli": "^3.1.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
@@ -28,6 +32,8 @@
     "serve": "NODE_OPTIONS='-r dotenv/config' node dist/index.js",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
-    "deploy": "echo \"TODO: Write deployment script!\""
+    "cdk:bootstrap": "NODE_OPTIONS='-r dotenv/config' cdk bootstrap",
+    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff",
+    "deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy"
   }
 }
