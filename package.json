@@ -29,10 +29,10 @@
     "typescript": "^3.5.3"
   },
   "scripts": {
-    "start": "NODE_OPTIONS='-r dotenv/config' nodemon --watch src --exec babel-node --extensions '.js,.ts' src/index.ts",
+    "start": "NODE_OPTIONS='-r dotenv/config' nodemon --watch src --exec babel-node --extensions '.js,.ts' src/serve.ts",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "build": "babel src --out-dir dist --delete-dir-on-start --extensions '.js,.ts'",
-    "serve": "NODE_OPTIONS='-r dotenv/config' node dist/index.js",
+    "serve": "NODE_OPTIONS='-r dotenv/config' node dist/serve.js",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
     "deploy": "echo \"TODO: Write deployment script!\""

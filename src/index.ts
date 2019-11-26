@@ -4,10 +4,10 @@ import { ApolloServer, gql } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { HelloResolver } from "./hello";
 
-(async () => {
-  const app = express();
-  const port = process.env.PORT || 3000;
+const app = express();
+export default app;
 
+(async () => {
   const server = new ApolloServer({
     schema: await buildSchema({
       resolvers: [HelloResolver],
@@ -16,11 +16,4 @@ import { HelloResolver } from "./hello";
   });
 
   server.applyMiddleware({ app, cors: false });
-
-  // start app
-  app.listen(port, () => {
-    console.log(
-      `Example app listening on port ${port}! GraphQL playground at /graphql.`
-    );
-  });
 })();
