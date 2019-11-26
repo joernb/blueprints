@@ -3,7 +3,10 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.18.0",
+    "@aws-cdk/aws-lambda": "^1.18.0",
     "@aws-cdk/core": "^1.8.0",
+    "aws-serverless-express": "^3.3.6",
     "express": "^4.17.1"
   },
   "devDependencies": {
@@ -13,11 +16,13 @@
     "@babel/node": "^7.6.3",
     "@babel/plugin-transform-typescript": "^7.7.4",
     "@babel/preset-env": "^7.6.3",
+    "@types/aws-serverless-express": "^3.3.2",
     "@types/express": "^4.17.2",
     "@types/node": "^12.7.2",
     "aws-cdk": "^1.8.0",
     "dotenv": "^8.2.0",
     "dotenv-cli": "^3.1.0",
+    "ncp": "^2.0.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
@@ -32,8 +37,10 @@
     "serve": "NODE_OPTIONS='-r dotenv/config' node dist/serve.js",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
+    "deploy": "yarn bundle:deps && yarn cdk:bootstrap && yarn cdk:deploy --require-approval never",
+    "bundle:deps": "cp package.json dist/package.json && cd dist && yarn install --production",
     "cdk:bootstrap": "NODE_OPTIONS='-r dotenv/config' cdk bootstrap",
-    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff",
-    "deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy"
+    "cdk:deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy",
+    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff"
   }
 }
