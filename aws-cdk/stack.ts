@@ -12,16 +12,8 @@ export class Stack extends cdk.Stack {
       handler: "lambda.default", // lambda.js export default value
       code: lambda.Code.fromAsset(path.join(__dirname, "..", "dist")),
     });
-
-    const api = new apiGateway.RestApi(this, "MyApiGatewayFunction", {
-      restApiName: "My Rest Api Name",
-      description: "Rest Api Description",
+    new apiGateway.LambdaRestApi(this, "MyLambdaRestApi", {
+      handler,
     });
-
-    const lambdaIntegration = new apiGateway.LambdaIntegration(handler, {
-      requestTemplates: { "application/json": '{ "statusCode": "200" }' },
-    });
-
-    api.root.addMethod("GET", lambdaIntegration); // GET /
   }
 }
