@@ -33,14 +33,16 @@
   "scripts": {
     "start": "NODE_OPTIONS='-r dotenv/config' nodemon --watch src --exec babel-node --extensions '.js,.ts' src/serve.ts",
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "build": "babel src --out-dir dist --delete-dir-on-start --extensions '.js,.ts'",
+    "build": "yarn babel:build && yarn deps:bundle",
+    "babel:build": "babel src --out-dir dist --delete-dir-on-start --extensions '.js,.ts'",
+    "deps:bundle": "cp package.json dist/package.json && cd dist && yarn install --production",
     "serve": "NODE_OPTIONS='-r dotenv/config' node dist/serve.js",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
-    "deploy": "yarn bundle:deps && yarn cdk:bootstrap && yarn cdk:deploy --require-approval never",
-    "bundle:deps": "cp package.json dist/package.json && cd dist && yarn install --production",
+    "deploy": "yarn cdk:bootstrap && yarn cdk:deploy --require-approval never",
     "cdk:bootstrap": "NODE_OPTIONS='-r dotenv/config' cdk bootstrap",
     "cdk:deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy",
-    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff"
+    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff",
+    "cdk:destroy": "NODE_OPTIONS='-r dotenv/config' cdk destroy"
   }
 }
