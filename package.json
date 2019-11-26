@@ -3,6 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
+    "@aws-cdk/aws-apigateway": "^1.18.0",
+    "@aws-cdk/aws-lambda": "^1.18.0",
     "@aws-cdk/core": "^1.8.0"
   },
   "devDependencies": {
@@ -10,6 +12,7 @@
     "@types/node": "^12.7.2",
     "aws-cdk": "^1.8.0",
     "dotenv": "^8.2.0",
+    "nodemon": "^1.19.4",
     "prettier": "^1.18.2",
     "ts-node": "^8.3.0",
     "tslint": "^5.18.0",
@@ -21,8 +24,10 @@
     "build": "echo \"TODO: Write build script!\"",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
+    "deploy": "yarn bundle:deps && yarn cdk:bootstrap && yarn cdk:deploy --require-approval never",
+    "bundle:deps": "cp package.json dist/package.json && cd dist && yarn install --production",
     "cdk:bootstrap": "NODE_OPTIONS='-r dotenv/config' cdk bootstrap",
-    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff",
-    "deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy"
+    "cdk:deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy",
+    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff"
   }
 }
