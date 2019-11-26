@@ -9,7 +9,7 @@ export class Stack extends cdk.Stack {
 
     const handler = new lambda.Function(this, "MyLambdaFunction", {
       runtime: lambda.Runtime.NODEJS_10_X,
-      handler: "index.default", // index.js export default value
+      handler: "lambda.default", // lambda.js export default value
       code: lambda.Code.fromAsset(path.join(__dirname, "..", "dist")),
     });
 
