@@ -15,5 +15,5 @@ export default app;
     context: ({ req, res }) => ({ req, res }),
   });
 
-  server.applyMiddleware({ app, cors: false });
+  server.applyMiddleware({ app, path: "/", cors: false });
 })();
