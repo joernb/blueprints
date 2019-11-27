@@ -25,7 +25,6 @@ export interface Options {
   silentAuthFlag?: string;
   redirectFlag?: string;
   logoutUrl?: string;
-  scope?: string;
 }
 
 export interface AuthContextApi {
@@ -54,10 +53,10 @@ export const AuthContext = React.createContext<AuthContextApi>({
   accessToken: undefined,
   error: undefined,
   authorize: () => undefined,
-  parseHash: defaultAsyncImpl,
-  silentAuth: defaultAsyncImpl,
+  parseHash: defaultAsyncImpl as any,
+  silentAuth: defaultAsyncImpl as any,
   logout: () => undefined,
-  patchUserMetadata: defaultAsyncImpl,
+  patchUserMetadata: defaultAsyncImpl as any,
 });
 
 const ensureBrowserEnvironment = () => {

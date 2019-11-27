@@ -14,7 +14,17 @@ const LoginPage = () => {
   } = useAuth();
 
   const onLogin = useCallback(() => {
-    authorize();
+    authorize({
+      scope: [
+        "openid",
+        "profile",
+        "email",
+        "read:current_user",
+        "create:current_user_metadata",
+        "update:current_user_metadata",
+        "delete:current_user_metadata",
+      ].join(" "),
+    });
   }, []);
 
   const onLogout = useCallback(() => {
