@@ -15,5 +15,9 @@ export class Stack extends cdk.Stack {
     new apiGateway.LambdaRestApi(this, "MyLambdaRestApi", {
       handler,
     });
+    // Set environment variables starting with LAMBDA_
+    Object.keys(process.env)
+      .filter(key => key.indexOf("LAMBDA_") === 0)
+      .forEach(key => handler.addEnvironment(key, process.env[key] || ""));
   }
 }
