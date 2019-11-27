@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
+    "netlify-cli": "^2.21.0",
     "prettier": "^1.18.2"
   },
   "scripts": {
@@ -29,6 +30,6 @@
     "serve": "NODE_OPTIONS='-r dotenv/config' gatsby serve -p 8000",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "lint": "prettier --check src/**/*.{js,jsx}",
-    "deploy": "echo \"TODO: Write deployment script!\""
+    "deploy": "NODE_OPTIONS='-r dotenv/config' netlify deploy --dir=public --prod"
   }
 }
