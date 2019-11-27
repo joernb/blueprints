@@ -17,7 +17,7 @@ Run
 yarn deploy
 ```
 
-to automatically apply all necessary migrations to an existing Contentful space. The name of the last (in terms of filename order) successfully applied migration script is stored in the description of a special content type. The migrate command will skip already applied scripts.
+to automatically apply all necessary migrations to an existing Contentful space. The wrapping execution script will write a field into a special migration tracking content type for each successfully applied migration script. If this field is present, the migration script will be skipped.
 
 ## Sample data
 
