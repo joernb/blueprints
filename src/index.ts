@@ -1,6 +1,7 @@
+import "regenerator-runtime/runtime";
 import "reflect-metadata";
 import express from "express";
-import { ApolloServer, gql } from "apollo-server-express";
+import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { HelloResolver } from "./hello";
 
