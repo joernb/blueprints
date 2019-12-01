@@ -55,7 +55,7 @@ module.exports = {
       resolve: `gatsby-plugin-create-client-paths`,
       options: {
         // TODO add client-side page prefix patterns (e.g. /profile/*)
-        prefixes: [`/login/*`],
+        prefixes: [],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
