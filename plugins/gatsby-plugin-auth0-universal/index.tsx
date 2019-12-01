@@ -3,6 +3,7 @@ import auth0, {
   Auth0Error,
   Auth0ParseHashError,
   Auth0UserProfile,
+  AuthOptions,
   AuthorizeOptions,
   CheckSessionOptions,
   LogoutOptions,
@@ -18,24 +19,21 @@ import React, {
 } from "react";
 import { useAsyncCallback, UseAsyncReturn } from "react-async-hook";
 
-export interface Options {
-  domain: string;
-  clientID: string;
-  redirectUri: string;
-  silentAuthFlag?: string;
-  redirectFlag?: string;
+export type Options = AuthOptions & {
+  silentAuthLocalStorageKey?: string;
+  redirectPathLocalStorageKey?: string;
   logoutUrl?: string;
-}
+};
 
 export interface AuthContextApi {
-  userInfo?: Auth0UserProfile;
+  idTokenPayload?: Auth0DecodedHash["idTokenPayload"];
   accessToken?: Auth0DecodedHash["accessToken"];
+  scope?: Auth0DecodedHash["scope"];
   error?: Auth0Error;
   authorize: (options?: AuthorizeOptions) => void;
   parseHash: UseAsyncReturn<Auth0UserProfile, [ParseHashOptions?]>;
   silentAuth: UseAsyncReturn<Auth0UserProfile, [CheckSessionOptions?]>;
   logout: (options?: LogoutOptions) => void;
-  patchUserMetadata: UseAsyncReturn<Auth0UserProfile, [string, any]>;
 }
 
 const defaultAsyncImpl = {
@@ -49,14 +47,14 @@ const defaultAsyncImpl = {
 };
 
 export const AuthContext = React.createContext<AuthContextApi>({
-  userInfo: undefined,
+  idTokenPayload: undefined,
   accessToken: undefined,
+  scope: undefined,
   error: undefined,
   authorize: () => undefined,
   parseHash: defaultAsyncImpl as any,
   silentAuth: defaultAsyncImpl as any,
   logout: () => undefined,
-  patchUserMetadata: defaultAsyncImpl as any,
 });
 
 const ensureBrowserEnvironment = () => {
@@ -74,11 +72,12 @@ export const AuthProvider = ({ options, children }: AuthProviderProps) => {
   const {
     domain,
     logoutUrl,
-    silentAuthFlag = "silentAuth",
-    redirectFlag = "redirect",
+    silentAuthLocalStorageKey = "silentAuth",
+    redirectPathLocalStorageKey = "redirect",
   } = options;
 
-  const [userInfo, setUserInfo] = useState();
+  const [idTokenPayload, setIdTokenPayload] = useState();
+  const [scope, setScope] = useState();
   const [accessToken, setAccessToken] = useState();
 
   // the auth0 instance
@@ -87,7 +86,6 @@ export const AuthProvider = ({ options, children }: AuthProviderProps) => {
       new auth0.WebAuth({
         ...options,
         responseType: "token id_token",
-        audience: `https://${domain}/api/v2/`,
       }),
     []
   );
@@ -103,40 +101,32 @@ export const AuthProvider = ({ options, children }: AuthProviderProps) => {
           throw hashError ? hashError.errorDescription : "Auth0Error";
         }
         setAccessToken(hashResult.accessToken);
-        localStorage.setItem(silentAuthFlag, "true");
+        localStorage.setItem(silentAuthLocalStorageKey, "true");
 
-        const redirectPath = localStorage.getItem(redirectFlag);
+        setScope(hashResult.scope);
+
+        const redirectPath = localStorage.getItem(redirectPathLocalStorageKey);
         if (redirectPath) {
-          localStorage.removeItem(redirectFlag);
+          localStorage.removeItem(redirectPathLocalStorageKey);
           navigate(redirectPath);
         }
 
-        const auth0Management = new auth0.Management({
-          domain,
-          token: hashResult.accessToken,
-        });
-        auth0Management.getUser(
-          hashResult.idTokenPayload.sub,
-          (userError, userResult) => {
-            if (!userError) {
-              setUserInfo(userResult);
-              resolve(userResult);
-            } else {
-              reject(userError);
-            }
-          }
-        );
+        setIdTokenPayload(hashResult.idTokenPayload);
+        resolve(hashResult.idTokenPayload);
       } catch (error) {
         reject(error);
       }
     },
-    [domain, silentAuthFlag]
+    [domain, silentAuthLocalStorageKey]
   );
 
   const authorize = useCallback(
     (params: AuthorizeOptions = {}) => {
       ensureBrowserEnvironment();
-      localStorage.setItem(redirectFlag, window.location.pathname);
+      localStorage.setItem(
+        redirectPathLocalStorageKey,
+        window.location.pathname
+      );
       auth0WebAuth.authorize(params);
     },
     [auth0WebAuth]
@@ -154,11 +144,11 @@ export const AuthProvider = ({ options, children }: AuthProviderProps) => {
     (params: CheckSessionOptions = {}) =>
       new Promise<Auth0UserProfile>((resolve, reject) => {
         ensureBrowserEnvironment();
-        if (localStorage.getItem(silentAuthFlag) === "true") {
-          localStorage.setItem(silentAuthFlag, "false");
+        if (localStorage.getItem(silentAuthLocalStorageKey) === "true") {
+          localStorage.setItem(silentAuthLocalStorageKey, "false");
           auth0WebAuth.checkSession(params, handleTokens(resolve, reject));
         } else {
-          reject("silentAuthFlag not set!");
+          reject("silentAuthLocalStorageKey not set!");
         }
       })
   );
@@ -166,48 +156,31 @@ export const AuthProvider = ({ options, children }: AuthProviderProps) => {
   const logout = useCallback(
     (params: LogoutOptions = { returnTo: logoutUrl }) => {
       ensureBrowserEnvironment();
-      localStorage.setItem(silentAuthFlag, "false");
+      localStorage.setItem(silentAuthLocalStorageKey, "false");
       auth0WebAuth.logout(params);
     },
     [auth0WebAuth]
   );
 
-  const patchUserMetadata = useAsyncCallback(
-    (subject: string, metadata: any) =>
-      new Promise<Auth0UserProfile>((resolve, reject) => {
-        new auth0.Management({
-          domain,
-          token: accessToken,
-        }).patchUserMetadata(subject, metadata, (err, result) => {
-          if (!err) {
-            setUserInfo(result);
-            resolve(result);
-          } else {
-            reject(err);
-          }
-        });
-      })
-  );
-
   // context api
   const provided = useMemo(
     () => ({
-      userInfo,
+      idTokenPayload,
       accessToken,
+      scope,
       authorize,
       parseHash,
       silentAuth,
       logout,
-      patchUserMetadata,
     }),
     [
-      userInfo,
+      idTokenPayload,
       accessToken,
+      scope,
       authorize,
       parseHash,
       silentAuth,
       logout,
-      patchUserMetadata,
     ]
   );
 
