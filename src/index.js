@@ -7,9 +7,8 @@ const app = express();
 // enable Cross-Origin Resource Sharing
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
-    optionsSuccessStatus:
-      parseInt(process.env.CORS_OPTIONS_SUCCESS_STATUS, 10) || undefined,
+    origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(",") : [],
+    optionsSuccessStatus: 204, // some legacy browsers (IE11, various SmartTVs) choke on 204 but work with 200
   })
 );
 
