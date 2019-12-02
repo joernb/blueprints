@@ -15,5 +15,14 @@ export class Stack extends cdk.Stack {
     new apiGateway.LambdaRestApi(this, "MyLambdaRestApi", {
       handler,
     });
+
+    // Deploy environment variables, that are needed at runtime
+    if (process.env.AWS_LAMBDA_RUNTIME_ENV_VARS) {
+      process.env.AWS_LAMBDA_RUNTIME_ENV_VARS.split(",").forEach(name =>
+        process.env[name]
+          ? handler.addEnvironment(name, process.env[name] as string)
+          : undefined
+      );
+    }
   }
 }
