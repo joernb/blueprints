@@ -7,12 +7,14 @@ export class Stack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const handler = new lambda.Function(this, "MyLambdaFunction", {
+    const handler = new lambda.Function(this, "LambdaFunction", {
       runtime: lambda.Runtime.NODEJS_10_X,
+      // TODO configure name of file and exported handler function
       handler: "index.default", // index.js export default value
+      // TODO configure build output folder
       code: lambda.Code.fromAsset(path.join(__dirname, "..", "dist")),
     });
-    new apiGateway.LambdaRestApi(this, "MyLambdaRestApi", {
+    new apiGateway.LambdaRestApi(this, "LambdaRestApi", {
       handler,
     });
 
