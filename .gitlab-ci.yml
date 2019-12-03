@@ -30,10 +30,12 @@ stages:
 .staging:
   variables:
     # TODO map environment variables, e.g.: FOO: $STAGING_FOO
+    GATSBY_APOLLO_CLIENT_URI: $STAGING_GATSBY_APOLLO_CLIENT_URI
 
 .production:
   variables:
     # TODO map environment variables, e.g.: FOO: $PRODUCTION_FOO
+    GATSBY_APOLLO_CLIENT_URI: $PRODUCTION_GATSBY_APOLLO_CLIENT_URI
 
 build_staging:
   extends:
