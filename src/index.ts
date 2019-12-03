@@ -1,8 +1,12 @@
 import express from "express";
 import cors from "cors";
+import awsServerlessExpressMiddleware from "aws-serverless-express/middleware";
 import helloMiddleware from "./hello";
 
 const app = express();
+
+// integrate middleware to bridge AWS serverless events to express middlewares
+app.use(awsServerlessExpressMiddleware.eventContext());
 
 // enable Cross-Origin Resource Sharing
 app.use(
