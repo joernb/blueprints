@@ -19,8 +19,10 @@
     "build": "echo \"TODO: Write build script!\"",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
+    "deploy": "yarn cdk:bootstrap && yarn cdk:deploy --require-approval never",
     "cdk:bootstrap": "NODE_OPTIONS='-r dotenv/config' cdk bootstrap",
+    "cdk:deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy",
     "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff",
-    "deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy"
+    "cdk:destroy": "NODE_OPTIONS='-r dotenv/config' cdk destroy"
   }
 }
