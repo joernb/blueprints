@@ -8,6 +8,7 @@ export class Stack extends cdk.Stack {
 
     const websiteBucket = new s3.Bucket(this, "WebsiteBucket", {
       websiteIndexDocument: "index.html",
+      websiteErrorDocument: "index.html", // prevent showing an S3 error page for url paths meant for client-side routing
       publicReadAccess: true,
     });
 
