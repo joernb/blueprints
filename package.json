@@ -19,7 +19,7 @@
   },
   "scripts": {
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "build": "echo \"TODO: Write build script!\"",
+    "build": "echo \"TODO: Write build script!\" && yarn bundle:deps",
     "test": "echo \"TODO: Write test script!\"",
     "lint": "prettier --check src/**/*.{js,jsx,ts,tsx} && tslint -c tslint.json 'src/**/*.{js,jsx,ts,tsx}'",
     "deploy": "yarn bundle:deps && yarn cdk:bootstrap && yarn cdk:deploy --require-approval never",
