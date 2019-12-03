@@ -30,12 +30,12 @@ stages:
 .staging:
   variables:
     # TODO map environment variables, e.g.: FOO: $STAGING_FOO
-    CORS_ORIGINS: $STAGING_CORS_ORIGINS
+    CORS_ORIGIN: $STAGING_CORS_ORIGIN
 
 .production:
   variables:
     # TODO map environment variables, e.g.: FOO: $PRODUCTION_FOO
-    CORS_ORIGINS: $PRODUCTION_CORS_ORIGINS
+    CORS_ORIGIN: $PRODUCTION_CORS_ORIGIN
 
 build_staging:
   extends:
