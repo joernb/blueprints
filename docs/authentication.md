@@ -46,11 +46,11 @@ Metadata:
   - Create a Single Page Application
     - Allowed Callback URLs
       - For non-production tenant: `http://localhost:8000/callback`
-      - Same as `${AUTH0_CALLBACK_URL}`
+      - Same as `${OAUTH2_REDIRECT_URI}`
     - Allowed Web Origins
       - For non-production tenant: `http://localhost:8000`
       - Same as `${PUBLIC_URL}`
-    - Allowed Logout URLs - For non-production tenant: `http://localhost:8000/${AUTH0_LOGOUT_PATH}` - Same as `${AUTH0_LOGOUT_URL}`
+    - Allowed Logout URLs - For non-production tenant: `http://localhost:8000/` - Same as `${OAUTH2_LOGOUT_URL}`
 
 <!-- TODO register Auth0 account 0.5h -->
 <!-- TODO create Auth0 tenant for staging environment 0.5h -->
