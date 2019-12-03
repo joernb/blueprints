@@ -26,6 +26,7 @@
     "bundle:deps": "cp package.json dist/package.json && cd dist && yarn install --production",
     "cdk:bootstrap": "NODE_OPTIONS='-r dotenv/config' cdk bootstrap",
     "cdk:deploy": "NODE_OPTIONS='-r dotenv/config' cdk deploy",
-    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff"
+    "cdk:diff": "NODE_OPTIONS='-r dotenv/config' cdk diff",
+    "cdk:destroy": "NODE_OPTIONS='-r dotenv/config' cdk destroy"
   }
 }
