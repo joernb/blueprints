@@ -1,3 +1,9 @@
 version: "3"
 
 services:
+  busybox:
+    image: busybox
+    container_name: busybox
+    command: "echo $MESSAGE"
+    environment:
+      - MESSAGE
