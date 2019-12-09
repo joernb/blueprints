@@ -17,11 +17,11 @@ const filePath = path.join(
   try {
     const func = require(filePath).default;
     const client = createClient({
-      accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN,
+      accessToken: process.env.CONTENTFUL_MANAGEMENT_TOKEN || "",
     });
-    const space = await client.getSpace(process.env.CONTENTFUL_SPACE_ID);
+    const space = await client.getSpace(process.env.CONTENTFUL_SPACE_ID || "");
     const environment = await space.getEnvironment(
-      process.env.CONTENTFUL_ENVIRONMENT
+      process.env.CONTENTFUL_ENVIRONMENT || "master"
     );
     console.log(`Executing sample data script ${filePath}`);
     await func(space, environment);
