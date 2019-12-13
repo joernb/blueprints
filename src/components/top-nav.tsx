@@ -16,8 +16,6 @@ import { Link as GatsbyLink } from "gatsby";
 import React, { useCallback, useState } from "react";
 import { useLocation } from "../../plugins/gatsby-plugin-use-location";
 
-interface Props {}
-
 const useStyles = makeStyles((theme: Theme) => ({
   popover: {
     pointerEvents: "none",
@@ -61,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-const TopNav = ({  }: Props) => {
+const TopNav = ({}: {}) => {
   const classes = useStyles();
   const { location } = useLocation();
   const [menuAnchorEl, setMenuAnchorEl] = useState<HTMLElement | null>(null);
