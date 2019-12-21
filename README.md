@@ -85,7 +85,13 @@ Blueprint branches are Git branches, that have a hierarchical structure encoded 
 
 This naming scheme shows the dependencies between the branches. For example, `node/react/master` is based on `node/master`, which means, that changes to `node/master` should always be merged into `node/react/master`.
 
-The `.../master` suffix indicates the most stable version of a blueprint. However it is also possible to have other branches like `.../feature-xy` or `.../develop` on the same level.
+Here is a shell command to find direct children of the current branch (e.g. `foo/master` -> `foo/*/master`):
+
+```sh
+git rev-parse --abbrev-ref --branches | grep -e "$(git rev-parse --abbrev-ref HEAD | sed 's/\(.*\)\/\(.*\)/\1/')/[^\/]*/master"
+```
+
+The `.../master` suffix indicates the most stable version of a blueprint. However it is also possible to have other branches like `.../feature-xy` or `.../develop` on the same level making it possible to have feature branches for modifying a blueprint.
 
 Most blueprint branches are based on one parent branch. However it is also possible to have branches, which implement the combination of two blueprint branches if their combination requires some effort.
 
@@ -111,11 +117,31 @@ Those branches will receive changes from both of their parents.
 
 # 🌸 Contributing
 
-## Extend a blueprint
+## Modify a blueprint
 
-To extend a blueprint `foo/master`, create a feature branch under `foo/` with a short name, that summarizes the change (e.g. `foo/extend-with-xyz`). Implement your change within this branch, open a merge request / pull request against `foo/master` and wait for approval.
+### Feature branch
 
-Now the new change in `foo/master` needs to be merged into all dependent branches. For a dependent branch called `foo/bar/master`, create a branch called `foo/bar/extend-with-xyz` and do the merge within this branch.
+To modify a blueprint `foo/master`, create a feature branch under `foo/` with a short name, that summarizes the change (e.g. `foo/extend-with-xyz`). Implement your change within this branch and open a merge request / pull request against `foo/master`.
+
+### Recursive merge cascade
+
+If a blueprint is changed, all child blueprints also need to be updated to keep them consistent. So if `foo/master` changes, those changes need to be merged into `foo/bar/master` as well. This can be done by creating a feature branch based on the child's master branch and merging the parent's feature branch into it.
+
+Create a feature branch `foo/bar/extend-with-xyz` based on `foo/bar/master` and check it out:
+
+```sh
+git co -b foo/bar/extend-with-xyz foo/bar/master
+```
+
+Merge the parent's feature branch `foo/extend-with-xyz` into it:
+
+```sh
+git merge foo/extend-with-xyz
+```
+
+Now solve merge conflicts and open another merge request / pull request against `foo/bar/master`.
+
+This updating step needs to be applied recursively to all children of `foo/bar/master` as well.
 
 ## Create a new blueprint
 
