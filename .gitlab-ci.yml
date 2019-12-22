@@ -29,11 +29,13 @@ stages:
 
 .staging:
   variables:
-    # TODO map environment variables, e.g.: FOO: $STAGING_FOO
+    NETLIFY_SITE_ID: $STAGING_NETLIFY_SITE_ID
+    NETLIFY_AUTH_TOKEN: $STAGING_NETLIFY_AUTH_TOKEN
 
 .production:
   variables:
-    # TODO map environment variables, e.g.: FOO: $PRODUCTION_FOO
+    NETLIFY_SITE_ID: $PRODUCTION_NETLIFY_SITE_ID
+    NETLIFY_AUTH_TOKEN: $PRODUCTION_NETLIFY_AUTH_TOKEN
 
 build_staging:
   extends:
