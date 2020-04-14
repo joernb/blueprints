@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . && prettier --check src/**/*.{js,jsx}",
+    "lint": "eslint . && prettier --check src/**/*.{js,jsx,ts,tsx}",
     "deploy": "echo \"TODO: Write deployment script!\""
   },
   "dependencies": {
@@ -19,6 +19,11 @@
     "@babel/core": "^7.9.0",
     "@babel/runtime": "^7.9.2",
     "@react-native-community/eslint-config": "^1.0.0",
+    "@types/jest": "^24.0.24",
+    "@types/react-native": "^0.62.0",
+    "@types/react-test-renderer": "16.9.2",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "babel-jest": "^25.3.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.8.0",
@@ -26,9 +31,18 @@
     "jest": "^25.3.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^1.18.2",
-    "react-test-renderer": "16.11.0"
+    "react-test-renderer": "16.11.0",
+    "typescript": "^3.8.3"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
   }
 }
