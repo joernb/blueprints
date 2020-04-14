@@ -1,3 +1,14 @@
 version: "3"
 
 services:
+  foo:
+    build: docker/
+    image: foo
+    ports:
+      - 8080:8080
+    command: echo 'hello world'
+    networks:
+      - my-network
+
+networks:
+  my-network:
