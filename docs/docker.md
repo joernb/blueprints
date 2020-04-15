@@ -9,7 +9,7 @@
 ## Build an image from Dockerfile
 
 ```sh
-docker build docker/ -t foo
+docker build . -t foo
 ```
 
 ## Run a container

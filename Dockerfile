@@ -2,6 +2,7 @@ FROM alpine
 
 # WORKDIR /
 # COPY file-on-host.txt .
+# COPY folder-on-host folder-in-image
 # RUN touch file-in-image.txt
 # USER uid:gid
 
