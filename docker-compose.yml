@@ -1,14 +1,19 @@
 version: "3"
 
 services:
-  foo:
-    build: .
-    image: foo
+  prism:
+    image: stoplight/prism:3
     ports:
-      - 8080:8080
-    command: echo 'hello world'
-    networks:
-      - my-network
-
-networks:
-  my-network:
+      - 4010:4010
+    volumes:
+      - ./openapi/mocked-api.yml:/openapi/mocked-api.yml
+    command: >
+      mock -p 4010 --host 0.0.0.0 /openapi/mocked-api.yml
+  swagger-ui:
+    image: "swaggerapi/swagger-ui"
+    ports:
+      - 80:8080
+    environment:
+      - API_URL=openapi/mocked-api.yml
+    volumes:
+      - "./openapi/mocked-api.yml:/usr/share/nginx/html/openapi/mocked-api.yml"

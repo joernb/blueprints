@@ -1,0 +1,81 @@
+openapi: 3.0.0
+info:
+  description: "Example API, that is mocked.
+  - [OpenAPI specs](https://swagger.io/specification/)
+  - [petstore example](https://github.com/stoplightio/prism/blob/master/examples/petstore.oas3.yaml)
+    "
+paths:
+  "/items":
+    get:
+      tags:
+        - item
+      summary: Get all items
+      description: Description
+      operationId: getItems
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Item"
+                example:
+                  - id: item1
+                  - id: item2
+                  - id: item3
+    post:
+      tags:
+        - item
+      summary: Add item
+      description: ""
+      operationId: addItem
+      requestBody:
+        "$ref": "#/components/requestBodies/Item"
+      responses:
+        "204":
+          description: No content
+  "/items/{itemId}":
+    get:
+      tags:
+        - item
+      summary: Get specific item
+      description: Description
+      operationId: getItem
+      parameters:
+        - name: itemId
+          in: path
+          description: id of item
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                "$ref": "#/components/schemas/Item"
+                example:
+                  id: "idOfItem"
+servers:
+  - url: http://localhost:4010
+components:
+  requestBodies:
+    Item:
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/Item"
+      description: Item payload
+      required: true
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Item id
