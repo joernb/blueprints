@@ -1,12 +1,15 @@
 version: "3"
 
 services:
-  foo:
-    build: .
-    image: foo
+  grafana:
+    image: grafana/grafana:5.1.0
+    container_name: grafana
+    volumes:
+      - "./grafana/provisioning:/etc/grafana/provisioning"
     ports:
-      - 8080:8080
-    command: echo 'hello world'
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: "${GF_SECURITY_ADMIN_PASSWORD}"
     networks:
       - my-network
 
