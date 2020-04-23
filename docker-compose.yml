@@ -1,12 +1,19 @@
 version: "3"
 
 services:
-  foo:
-    build: .
-    image: foo
+  logstash:
+    # depends_on:
+    #   - elasticsearch
+    image: logstash:7.6.2
+    volumes:
+      - "./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml"
+      - "./logstash/pipeline:/usr/share/logstash/pipeline"
     ports:
-      - 8080:8080
-    command: echo 'hello world'
+      - "5000:5000/tcp"
+      - "5000:5000/udp"
+      - "9600:9600"
+    environment:
+      LS_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - my-network
 
