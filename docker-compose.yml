@@ -1,12 +1,20 @@
 version: "3"
 
 services:
-  foo:
-    build: .
-    image: foo
+  elasticsearch:
+    # https://hub.docker.com/_/elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
     ports:
-      - 8080:8080
-    command: echo 'hello world'
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - "./elasticsearch/data:/usr/share/elasticsearch/data"
+      - "./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD}
+      ES_JAVA_OPTS: "-Xmx256m -Xms256m"
+      # https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+      discovery.type: single-node
     networks:
       - my-network
 
