@@ -18,10 +18,12 @@ Set up environment variables in `.env`:
 cp .env.example .env
 ```
 
-Build:
+Start the packager for debugging and run an Android emulator or an iOS simulator:
 
 ```sh
-yarn build
+yarn start
+yarn android
+yarn ios
 ```
 
 Run tests:
@@ -30,10 +32,35 @@ Run tests:
 yarn test
 ```
 
-Deploy:
+## Android Build
+
+Build an APK:
 
 ```sh
-yarn deploy
+yarn build:android
+```
+
+## iOS Build
+
+Find a way to install CocoaPods:
+
+```sh
+sudo gem install cocoapods
+brew install cocoapods
+```
+
+Install pod:
+
+```sh
+cd ios
+pod install
+cd ..
+```
+
+Build the project:
+
+```sh
+yarn build:ios
 ```
 
 ## Documentation
