@@ -1,0 +1,28 @@
+{
+  "name": "blueprint",
+  "private": true,
+  "devEngines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "lerna": "^5.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.2.1"
+  },
+  "scripts": {
+    "postinstall": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS postinstall",
+    "dev": "NODE_OPTIONS='-r dotenv/config' lerna run --parallel --stream $LERNA_FLAGS dev",
+    "build": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS build",
+    "start": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS start",
+    "test": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS test",
+    "lint": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS lint",
+    "deploy": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS deploy"
+  },
+  "workspaces": [
+    "infrastructure/*",
+    "apps/*",
+    "libs/*"
+  ]
+}
