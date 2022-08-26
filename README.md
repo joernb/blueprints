@@ -25,17 +25,21 @@ This readme gives developers an overview over the system architecture and the de
 graph LR
 
 User["User"]
+NewRelic["New Relic"]
 
 subgraph " "
   NextApp("Next App")
 end
 
 User -.-> NextApp
+NextApp -."Telemetry".-> NewRelic
 ```
 
 ## infrastructure/
 
 Infrastructure contains the setup for cloud-based environments and services and is required to deploy and operate applications. The setup is described through documentation or through infrastructure as code solutions.
+
+- **[New Relic](infrastructure/new-relic/README.md)**: Collects telemetry data to monitor application performance and health.
 
 ## apps/
 
@@ -157,7 +161,11 @@ Things to do on a regular basis:
 
 ## Monitoring
 
+- **[New Relic](infrastructure/new-relic/README.md)**: Application logs, metrics, errors.
+
 ## Alerting
+
+- **[New Relic](infrastructure/new-relic/README.md)**: Triggers alerts based on configured conditions and sends notifications.
 
 ## Incident Response
 

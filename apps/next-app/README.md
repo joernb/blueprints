@@ -27,3 +27,5 @@ Next.js web app with integrated REST API.
 
 - `$PUBLIC_URL/`: Serves the web application.
 - `$PUBLIC_URL/api/`: Provides the REST API used by the web application.
+- The integrated [New Relic Browser Agent](https://docs.newrelic.com/docs/browser/browser-monitoring/installation/install-browser-monitoring-agent/) sends frontend telemetry from the user's browser to New Relic.
+- The integrated [New Relic Node Agent](https://docs.newrelic.com/docs/apm/agents/nodejs-agent/installation-configuration/install-nodejs-agent) sends backend telemetry to New Relic.

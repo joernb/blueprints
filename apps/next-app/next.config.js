@@ -2,6 +2,12 @@
 
 const path = require("path");
 
+// Decode env var from base64
+const newRelicCodeSnippet = Buffer.from(
+  process.env.NEW_RELIC_CODE_SNIPPET_BASE64,
+  "base64"
+).toString();
+
 module.exports = {
   poweredByHeader: false,
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
@@ -13,5 +19,8 @@ module.exports = {
       type: "javascript/auto",
     });
     return config;
+  },
+  env: {
+    NEW_RELIC_CODE_SNIPPET: newRelicCodeSnippet,
   },
 };
