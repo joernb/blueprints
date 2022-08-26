@@ -25,17 +25,21 @@ This readme gives developers an overview over the system architecture and the de
 graph LR
 
 User["User"]
+GitLab["GitLab"]
 
 subgraph " "
   NextApp("Next App")
 end
 
 User -.-> NextApp
+GitLab -."deploys".-> NextApp
 ```
 
 ## infrastructure/
 
 Infrastructure contains the setup for cloud-based environments and services and is required to deploy and operate applications. The setup is described through documentation or through infrastructure as code solutions.
+
+- **[GitLab](infrastructure/gitlab/README.md)**: Stores code repositories and runs CI/CD pipelines.
 
 ## apps/
 
@@ -156,6 +160,8 @@ Things to do on a regular basis:
 - Learn from failures by doing [postmortems](https://sre.google/workbook/postmortem-culture).
 
 ## Monitoring
+
+- **[GitLab](infrastructure/gitlab/README.md)**: Provides aggregated metrics about development and deployment.
 
 ## Alerting
 

@@ -1,0 +1,11 @@
+{
+  "name": "@my-org/gitlab",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {}
+}

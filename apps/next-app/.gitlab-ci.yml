@@ -1,0 +1,70 @@
+# GitLab CI/CD Pipeline Configuration Reference: https://docs.gitlab.com/ee/ci/yaml/
+
+variables:
+  # Execute monorepo run scripts only for certain packages
+  LERNA_FLAGS: "--scope @my-org/next-app --include-dependencies"
+
+default:
+  image: node:16-alpine
+  # https://docs.gitlab.com/ee/ci/caching/#cache-nodejs-dependencies
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - .npm/
+
+stages:
+  - build
+  - test
+  - deploy
+
+build_staging:
+  stage: build
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run build
+  artifacts:
+    untracked: true
+  environment:
+    name: staging
+  except:
+    - production
+
+build_production:
+  stage: build
+  script:
+    - npm ci --cache .npm --prefer-offline
+    - npm run build
+  artifacts:
+    untracked: true
+  environment:
+    name: production
+  only:
+    - production
+
+test:
+  stage: test
+  script:
+    - npm run lint
+    - npm test
+  artifacts:
+    untracked: true
+
+deploy_staging:
+  stage: deploy
+  script:
+    - npm run deploy
+  environment:
+    name: staging
+    url: $PUBLIC_URL
+  only:
+    - main
+
+deploy_production:
+  stage: deploy
+  script:
+    - npm run deploy
+  environment:
+    name: production
+    url: $PUBLIC_URL
+  only:
+    - production

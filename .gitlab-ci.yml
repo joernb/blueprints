@@ -1,0 +1,12 @@
+# GitLab CI/CD Pipeline Configuration Reference: https://docs.gitlab.com/ee/ci/yaml/
+
+default:
+  image: node:16-alpine
+
+stages:
+  - triggers
+
+next_app:
+  stage: triggers
+  trigger:
+    include: apps/next-app/.gitlab-ci.yml
