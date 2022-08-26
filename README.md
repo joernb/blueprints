@@ -24,6 +24,13 @@ This readme gives developers an overview over the system architecture and the de
 ```mermaid
 graph LR
 
+User["User"]
+
+subgraph " "
+  NextApp("Next App")
+end
+
+User -.-> NextApp
 ```
 
 ## infrastructure/
@@ -34,9 +41,14 @@ Infrastructure contains the setup for cloud-based environments and services and 
 
 Applications are executables that are deployed to and operated on infrastructure. They use internal and external libraries as code dependencies. Applications are configured through environment variables that are passed in at runtime or compiled into the application at compile time.
 
+- **[Next App](apps/next-app/README.md)**: Next.js web app with integrated REST API.
+
 ## libs/
 
 Libraries are used as code dependencies by applications or other libraries. They typically implement specific functionality (e.g. utility functions, user interface components) or the network interaction between applications on the client side as a "client library" or the server side as an "api library". Libraries can be published to make them available for external applications outside the Monorepo. Libraries can define their own build process or just provide source files that are compiled by the build process of the consuming application. Libraries should not read environment variables but receive their configuration from the application through some kind of initialization.
+
+- **[React API Client](libs/react-api-client/README.md)**: Client library that provides React Hooks to access the REST API.
+- **[Express API](libs/express-api/README.md)**: Server library that implements a REST API as an Express middleware.
 
 # 🚀 Development
 
@@ -73,6 +85,7 @@ How to develop and debug changes locally:
   ```sh
   npm run dev
   ```
+- Open [http://localhost:3000](http://localhost:3000) in browser
 
 ## Build
 
