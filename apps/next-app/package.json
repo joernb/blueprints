@@ -6,6 +6,7 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "@my-org/auth0": "file:../../infrastructure/auth0",
     "@my-org/express-api": "file:../../libs/express-api",
     "@my-org/react-api-client": "file:../../libs/react-api-client",
     "next": "^12.1.2",

@@ -27,3 +27,6 @@ Next.js web app with integrated REST API.
 
 - `$PUBLIC_URL/`: Serves the web application.
 - `$PUBLIC_URL/api/`: Provides the REST API used by the web application.
+- Redirects the user's browser to [Auth0](../../infrastructure/auth0/README.md) Universal Login.
+- Uses [Auth0](../../infrastructure/auth0/README.md) Management API to manage users.
+- Uses [Auth0](../../infrastructure/auth0/README.md) JWKS endpoint to verify access tokens that are sent along wth API calls.

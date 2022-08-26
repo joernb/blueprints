@@ -30,12 +30,19 @@ subgraph " "
   NextApp("Next App")
 end
 
+Auth0["Auth0"]
+
 User -.-> NextApp
+User -."Universal Login".-> Auth0
+NextApp -."Management API".-> Auth0
+NextApp -."JWKS".-> Auth0
 ```
 
 ## infrastructure/
 
 Infrastructure contains the setup for cloud-based environments and services and is required to deploy and operate applications. The setup is described through documentation or through infrastructure as code solutions.
+
+- **[Auth0](infrastructure/auth0/README.md)**: Provides authentication and user management.
 
 ## apps/
 
@@ -156,6 +163,8 @@ Things to do on a regular basis:
 - Learn from failures by doing [postmortems](https://sre.google/workbook/postmortem-culture).
 
 ## Monitoring
+
+- **[Auth0](infrastructure/auth0/README.md)**: Monitors sign-ups, user activity, account modifications, etc.
 
 ## Alerting
 

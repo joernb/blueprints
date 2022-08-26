@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logoImage from "../public/logo.png";
 import styles from "./header.module.css";
+import UserNav from "./user-nav";
 
 interface Props {}
 
@@ -22,7 +23,9 @@ const Header = ({}: Props) => {
         </Link>
       </nav>
       <nav></nav>
-      <nav></nav>
+      <nav>
+        <UserNav />
+      </nav>
     </header>
   );
 };

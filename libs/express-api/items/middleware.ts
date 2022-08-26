@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { Context } from "../context";
+import { checkPermission } from "../util/check-permission";
 import { createItem } from "./create-item";
 import { deleteItem } from "./delete-item";
 import { getItem } from "./get-item";
 import { getItems } from "./get-items";
-import { Item } from "./model";
+import { Item, permissions } from "./model";
 import { updateItem } from "./update-item";
 
 export interface GetItemsResponseBody {
@@ -50,25 +51,30 @@ export interface UpdateItemResponseBody {
 export const middleware = (context: Context) => {
   const routes = Router();
 
-  routes.get<void, GetItemsResponseBody>("/", async (req, res) =>
-    res.json({
-      items: await getItems(context),
-    })
-  );
-
-  routes.post<void, CreateItemResponseBody, CreateItemRequestBody>(
+  routes.get<void, GetItemsResponseBody>(
     "/",
+    checkPermission(permissions.READ_ITEMS),
     async (req, res) =>
       res.json({
-        item: await createItem(context, req.body),
+        items: await getItems(context),
       })
   );
 
   routes.get<GetItemRequestParams, GetItemResponseBody>(
     "/:id",
+    checkPermission(permissions.READ_ITEMS),
     async (req, res) =>
       res.json({
         item: await getItem(context, req.params.id),
+      })
+  );
+
+  routes.post<void, CreateItemResponseBody, CreateItemRequestBody>(
+    "/",
+    checkPermission(permissions.WRITE_ITEMS),
+    async (req, res) =>
+      res.json({
+        item: await createItem(context, req.body),
       })
   );
 
@@ -76,7 +82,7 @@ export const middleware = (context: Context) => {
     UpdateItemRequestParams,
     UpdateItemResponseBody,
     UpdateItemRequestBody
-  >("/:id", async (req, res) =>
+  >("/:id", checkPermission(permissions.WRITE_ITEMS), async (req, res) =>
     res.json({
       item: await updateItem(context, req.params.id, req.body),
     })
@@ -84,6 +90,7 @@ export const middleware = (context: Context) => {
 
   routes.delete<DeleteItemRequestParams, DeleteItemResponseBody>(
     "/:id",
+    checkPermission(permissions.WRITE_ITEMS),
     async (req, res) =>
       res.json({
         id: await deleteItem(context, req.params.id),

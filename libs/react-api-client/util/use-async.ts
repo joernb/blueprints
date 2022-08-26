@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 
 /**
- * React hook that tracks state and results of async api requests
+ * React hook that tracks state and results of async operations.
  */
 export const useAsync = <Input, Output>(
   asyncFn: (input: Input) => Promise<Output>

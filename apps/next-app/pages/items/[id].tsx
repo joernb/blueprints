@@ -1,4 +1,5 @@
 import { useItem } from "@my-org/react-api-client/items/use-item";
+import { withAuthenticationRequired } from "@my-org/react-api-client/users/with-authentication-required";
 import { useInputState } from "@my-org/react-api-client/util/use-input-state";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -57,4 +58,4 @@ const ItemPage = ({}: Props) => {
   );
 };
 
-export default ItemPage;
+export default withAuthenticationRequired(ItemPage);

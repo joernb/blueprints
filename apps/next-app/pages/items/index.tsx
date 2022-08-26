@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import Section from "../../components/section";
 import { useItems } from "@my-org/react-api-client/items/use-items";
 import Link from "next/link";
+import { withAuthenticationRequired } from "@my-org/react-api-client/users/with-authentication-required";
 
 interface Props {}
 
@@ -41,4 +42,4 @@ const ItemsPage = ({}: Props) => {
   );
 };
 
-export default ItemsPage;
+export default withAuthenticationRequired(ItemsPage);

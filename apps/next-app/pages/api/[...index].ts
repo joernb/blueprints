@@ -3,7 +3,21 @@ import { Router } from "express";
 import { NextApiHandler } from "next";
 
 const router = Router({});
-router.use("/api", middleware({}));
+router.use(
+  "/api",
+  middleware({
+    auth0ManagementClient: {
+      domain: process.env.AUTH0_MANAGEMENT_DOMAIN || "",
+      clientId: process.env.AUTH0_MANAGEMENT_CLIENT_ID,
+      clientSecret: process.env.AUTH0_MANAGEMENT_CLIENT_SECRET,
+    },
+    jwt: {
+      jwksUri: process.env.JWKS_URI,
+      audience: process.env.JWT_AUDIENCE,
+      issuer: process.env.JWT_ISSUER,
+    },
+  })
+);
 
 /**
  * A Next.js request handler that forwards requests to an Express router

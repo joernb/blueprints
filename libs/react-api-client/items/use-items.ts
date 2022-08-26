@@ -5,19 +5,31 @@ import {
 } from "@my-org/express-api/items/middleware";
 import { useContext, useEffect } from "react";
 import { context } from "../context";
+import { useAuth } from "../users/use-auth";
 import { fetchJson } from "../util/fetch-json";
 import { useAsync } from "../util/use-async";
 
 export const useItems = () => {
   const { baseUrl } = useContext(context);
+  const { getAccessTokenSilently } = useAuth();
 
-  // const get = useApi<void, GetItemsResponseBody>("GET", `${baseUrl}/items`);
-  const get = useAsync<void, GetItemsResponseBody>(() =>
-    fetchJson("GET", `${baseUrl}/items`, undefined)
+  const get = useAsync<void, GetItemsResponseBody>(async () =>
+    fetchJson(
+      "GET",
+      `${baseUrl}/items`,
+      undefined,
+      await getAccessTokenSilently()
+    )
   );
 
   const create = useAsync<CreateItemRequestBody, CreateItemResponseBody>(
-    (body) => fetchJson("POST", `${baseUrl}/items`, body)
+    async (body) =>
+      fetchJson(
+        "POST",
+        `${baseUrl}/items`,
+        body,
+        await getAccessTokenSilently()
+      )
   );
 
   // Automatically fetch items

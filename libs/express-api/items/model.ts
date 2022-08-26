@@ -17,3 +17,8 @@ export const itemStorage = (): Item[] => [
     value: "C",
   },
 ];
+
+export const permissions = {
+  READ_ITEMS: "read:items",
+  WRITE_ITEMS: "write:items",
+};
