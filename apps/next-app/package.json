@@ -9,6 +9,7 @@
     "@my-org/auth0": "file:../../infrastructure/auth0",
     "@my-org/express-api": "file:../../libs/express-api",
     "@my-org/react-api-client": "file:../../libs/react-api-client",
+    "@my-org/stripe": "file:../../infrastructure/stripe",
     "next": "^12.1.2",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"

@@ -23,6 +23,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           router.replace(appState?.returnTo || window.location.pathname);
         },
       },
+      stripe: {
+        publishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+      },
     }),
     []
   );

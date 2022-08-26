@@ -10,7 +10,8 @@
     "react-dom": "^17.0.0"
   },
   "dependencies": {
-    "@auth0/auth0-react": "^1.10.0"
+    "@auth0/auth0-react": "^1.10.0",
+    "@stripe/stripe-js": "^1.29.0"
   },
   "devDependencies": {
     "@my-org/express-api": "file:../express-api",

@@ -10,13 +10,15 @@ Provides authentication and user management.
 
 # 🧬 Structure
 
-## Cloud Resources
+## [Tenants](https://auth0.com/docs/get-started/auth0-overview/create-tenants)
 
 - Account
   - [Tenants](https://auth0.com/docs/get-started/auth0-overview/create-tenants) `my-org-staging` / `my-org-production`: Isolated environments that are managed through the dashboard or the Management API.
     - [Users](https://auth0.com/docs/authenticate/database-connections/auth0-user-store): Auth0 stores and manages user accounts.
       - [user_metadata](https://auth0.com/docs/manage-users/user-accounts/metadata): Stores metadata that users can edit themselves (e.g. preferences).
       - [app_metadata](https://auth0.com/docs/manage-users/user-accounts/metadata): Stores metadata that users cannot edit themselves (e.g. permissions).
+        - `customerId`: [Stripe](../stripe/README.md) customer ID linked to this user.
+    - `customerId`: [Stripe](../stripe/README.md) customer ID linked to this user.
     - [Applications](https://auth0.com/docs/get-started/applications): Applications represent clients that want to access an API.
       - `next-app` (Single Page Application): Allows user logins from app
         - Client ID: `NEXT_PUBLIC_AUTH0_CLIENT_ID`

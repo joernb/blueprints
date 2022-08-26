@@ -31,11 +31,17 @@ subgraph " "
 end
 
 Auth0["Auth0"]
+Stripe["Stripe"]
 
 User -.-> NextApp
 User -."Universal Login".-> Auth0
 NextApp -."Management API".-> Auth0
 NextApp -."JWKS".-> Auth0
+
+User -."Customer Portal".-> Stripe
+User -."Hosted Checkout".-> Stripe
+NextApp -."Stripe API".-> Stripe
+Stripe -."Events".-> NextApp
 ```
 
 ## infrastructure/
@@ -43,6 +49,7 @@ NextApp -."JWKS".-> Auth0
 Infrastructure contains the setup for cloud-based environments and services and is required to deploy and operate applications. The setup is described through documentation or through infrastructure as code solutions.
 
 - **[Auth0](infrastructure/auth0/README.md)**: Provides authentication and user management.
+- **[Stripe](infrastructure/stripe/README.md)**: Provides subscriptions and payment functionality.
 
 ## apps/
 
@@ -165,6 +172,7 @@ Things to do on a regular basis:
 ## Monitoring
 
 - **[Auth0](infrastructure/auth0/README.md)**: Monitors sign-ups, user activity, account modifications, etc.
+- **[Stripe](infrastructure/stripe/README.md)**: Logs payment activity and provides financial metrics.
 
 ## Alerting
 

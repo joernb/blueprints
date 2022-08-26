@@ -23,6 +23,11 @@ const UserNav = ({}: Props) => {
       <nav className={`${styles.menu} ${open ? styles.open : ""}`}>
         <ul>
           <li>
+            <Link href="/payment/subscription">
+              <a>Subscription</a>
+            </Link>
+          </li>
+          <li>
             <Link href="/user/settings">
               <a>Settings</a>
             </Link>

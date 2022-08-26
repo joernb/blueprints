@@ -16,6 +16,9 @@ router.use(
       audience: process.env.JWT_AUDIENCE,
       issuer: process.env.JWT_ISSUER,
     },
+    stripeClient: {
+      secretKey: process.env.STRIPE_SECRET_KEY,
+    },
   })
 );
 

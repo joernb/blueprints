@@ -3,6 +3,7 @@ import { Context } from "./context";
 import { middleware as itemsMiddleware } from "./items/middleware";
 import { itemStorage } from "./items/model";
 import { middleware as usersMiddleware } from "./users/middleware";
+import { middleware as paymentMiddleware } from "./payment/middleware";
 import {
   managementClient,
   Options as Auth0ManagementClientOptions,
@@ -14,10 +15,15 @@ import {
   Options as JwtMiddlewareOptions,
   verifyJwt,
 } from "./util/verify-jwt";
+import {
+  stripeClient,
+  Options as StripeClientOptions,
+} from "./util/stripe-client";
 
 export interface Options {
   auth0ManagementClient: Auth0ManagementClientOptions;
   jwt: JwtMiddlewareOptions;
+  stripeClient: StripeClientOptions;
 }
 
 /**
@@ -27,6 +33,7 @@ export const middleware = (options: Options) => {
   const context: Context = {
     itemStorage: itemStorage(),
     auth0ManagementClient: managementClient(options.auth0ManagementClient),
+    stripeClient: stripeClient(options.stripeClient),
   };
 
   const routes = Router();
@@ -36,6 +43,7 @@ export const middleware = (options: Options) => {
 
   routes.use("/items", verifyJwtMiddleware, itemsMiddleware(context));
   routes.use("/users", verifyJwtMiddleware, usersMiddleware(context));
+  routes.use("/payment", verifyJwtMiddleware, paymentMiddleware(context));
 
   routes.use(handleUnauthorizedErrors);
   routes.use(handleForbiddenErrors);
