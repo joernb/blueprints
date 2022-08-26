@@ -26,7 +26,7 @@ graph LR
 
 User["User"]
 
-subgraph " "
+subgraph "Vercel"
   NextApp("Next App")
 end
 
@@ -36,6 +36,8 @@ User -.-> NextApp
 ## infrastructure/
 
 Infrastructure contains the setup for cloud-based environments and services and is required to deploy and operate applications. The setup is described through documentation or through infrastructure as code solutions.
+
+- **[Vercel](infrastructure/vercel/README.md)**: Cloud platform for deploying and operating web apps.
 
 ## apps/
 
@@ -156,6 +158,8 @@ Things to do on a regular basis:
 - Learn from failures by doing [postmortems](https://sre.google/workbook/postmortem-culture).
 
 ## Monitoring
+
+- **[Vercel](infrastructure/vercel/README.md)**: Collects application logs.
 
 ## Alerting
 
