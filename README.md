@@ -24,6 +24,18 @@ This readme gives developers an overview over the system architecture and the de
 ```mermaid
 graph LR
 
+User["User"]
+
+subgraph " "
+  ReactNativeApp("React Native App")
+end
+
+subgraph " "
+  ExpressApp("Express App")
+end
+
+User -.-> ReactNativeApp
+ReactNativeApp -.-> ExpressApp
 ```
 
 ## infrastructure/
@@ -34,9 +46,15 @@ Infrastructure contains the setup for cloud-based environments and services and 
 
 Applications are executables that are deployed to and operated on infrastructure. They use internal and external libraries as code dependencies. Applications are configured through environment variables that are passed in at runtime or compiled into the application at compile time.
 
+- **[React Native App](apps/react-native-app/README.md)**: React Native mobile app for iOS and Android.
+- **[Express App](apps/express-app/README.md)**: Node.js Express backend app that exposes a REST API.
+
 ## libs/
 
 Libraries are used as code dependencies by applications or other libraries. They typically implement specific functionality (e.g. utility functions, user interface components) or the network interaction between applications on the client side as a "client library" or the server side as an "api library". Libraries can be published to make them available for external applications outside the Monorepo. Libraries can define their own build process or just provide source files that are compiled by the build process of the consuming application. Libraries should not read environment variables but receive their configuration from the application through some kind of initialization.
+
+- **[react-api-client](libs/react-api-client/README.md)**: Provides React hooks for client-side API access and state management.
+- **[express-api](libs/express-api/README.md)**: Exports an Express middleware that implements a REST API.
 
 # 🚀 Development
 
@@ -56,9 +74,11 @@ Libraries are used as code dependencies by applications or other libraries. They
 How to set up a local development environment:
 
 - Install [Node.js](https://nodejs.org)
+- Install [iOS / Android React Native environment](apps/react-native-app/README.md)
 - Install dependencies:
   ```sh
   npm install
+  npm run install-ios
   ```
 - Copy [`.env.example`](./.env.example) to `.env` and set up local environment variables:
   ```sh
@@ -72,6 +92,11 @@ How to develop and debug changes locally:
 - Start local development servers:
   ```sh
   npm run dev
+  ```
+- Start iOS or Android simulator/emulator and app:
+  ```sh
+  npm run dev-ios
+  npm run dev-android
   ```
 
 ## Build

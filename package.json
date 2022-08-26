@@ -13,7 +13,10 @@
   },
   "scripts": {
     "postinstall": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS postinstall",
+    "install-ios": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS install-ios",
     "dev": "NODE_OPTIONS='-r dotenv/config' lerna run --parallel --stream $LERNA_FLAGS dev",
+    "dev-ios": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS dev-ios",
+    "dev-android": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS dev-android",
     "build": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS build",
     "start": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS start",
     "test": "NODE_OPTIONS='-r dotenv/config' lerna run --stream $LERNA_FLAGS test",
