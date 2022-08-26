@@ -1,0 +1,13 @@
+{
+  "name": "@my-org/heroku",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "heroku": "^7.60.1"
+  },
+  "scripts": {}
+}

@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@my-org/express-api": "file:../../libs/express-api",
+    "@my-org/heroku": "file:../../infrastructure/heroku",
     "@my-org/react-api-client": "file:../../libs/react-api-client",
     "next": "^12.1.2",
     "react": "^17.0.0",
@@ -26,8 +27,9 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint && prettier --check '**/*.{js,jsx,ts,tsx}'"
+    "start": "next start -p $PORT",
+    "lint": "next lint && prettier --check '**/*.{js,jsx,ts,tsx}'",
+    "deploy": "git push -f https://-:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:master"
   },
   "browserslist": [
     "defaults"
